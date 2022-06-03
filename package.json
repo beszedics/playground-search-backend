@@ -1,0 +1,19 @@
+{
+  "name": "playground-search-backend",
+  "version": "1.0.0",
+  "description": "Playground search application backend side for the university thesis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beszedics/playground-search-backend.git"
+  },
+  "author": "Tamas Beszedics",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beszedics/playground-search-backend/issues"
+  },
+  "homepage": "https://github.com/beszedics/playground-search-backend#readme"
+}
