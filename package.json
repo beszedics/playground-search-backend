@@ -1,7 +1,7 @@
 {
   "name": "playground-search-backend",
   "version": "1.0.0",
-  "description": "Playground search application backend side for the university thesis",
+  "description": "Playground search application backend side for the university dissertation written in PERN",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -43,7 +43,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "cz-conventional-changelog"
     }
   }
 }
