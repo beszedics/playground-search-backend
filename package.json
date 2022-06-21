@@ -4,8 +4,10 @@
   "description": "Playground search application backend side for the university dissertation written in PERN",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "doMigrate": "npx sequelize-cli db:migrate",
+    "undoMigrate": "npx sequelize-cli db:migrate:undo",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
     "lint:js": "node node_modules/eslint/bin/eslint.js --config .eslintrc"
