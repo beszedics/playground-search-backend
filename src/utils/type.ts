@@ -6,3 +6,11 @@ export type User = {
   lastName: string;
   password: string;
 };
+
+export type Playground = {
+  id: number;
+  name: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+};
