@@ -14,3 +14,19 @@ export type Playground = {
   latitude: number;
   longitude: number;
 };
+
+export type CommentRead = {
+  id: number;
+  description: string;
+  user: User;
+  playground: Playground;
+  rating: number;
+};
+
+export type CommentWrite = {
+  id: number;
+  description: string;
+  userId: number;
+  playgroundId: number;
+  rating: number;
+};

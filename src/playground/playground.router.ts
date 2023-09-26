@@ -17,7 +17,7 @@ playgroundRouter.get('/', async (request, response) => {
 
 // GET: Get a single playground by ID
 playgroundRouter.get('/:id', async (request, response) => {
-  const id = parseInt(request.params.id);
+  const id = parseInt(request.params.id, 10);
 
   try {
     const playground = await PlaygroundService.getPlayground(id);
@@ -72,7 +72,7 @@ playgroundRouter.put(
       return response.status(400).json({ errors: errors.array() });
     }
 
-    const id = parseInt(request.params?.id);
+    const id = parseInt(request.params?.id, 10);
 
     try {
       const playground = request.body;
@@ -82,14 +82,16 @@ playgroundRouter.put(
       );
       return response.status(200).json(updatedPlayground);
     } catch (error: any) {
-      return response.status(500).json(error.message);
+      return response
+        .status(500)
+        .json({ error: error.meta.cause, success: false });
     }
   }
 );
 
-// DELETE: Delete a playground by id
+// DELETE: Delete a playground by ID
 playgroundRouter.delete('/:id', async (request, response) => {
-  const id = parseInt(request.params?.id);
+  const id = parseInt(request.params?.id, 10);
 
   try {
     await PlaygroundService.deletePlayground(id);
@@ -97,6 +99,8 @@ playgroundRouter.delete('/:id', async (request, response) => {
       .status(204)
       .json('Playground has been successfully deleted');
   } catch (error: any) {
-    return response.status(500).json(error.message);
+    return response
+      .status(500)
+      .json({ error: error.meta.cause, success: false });
   }
 });
