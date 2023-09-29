@@ -13,20 +13,15 @@ export type Playground = {
   address: string;
   latitude: number;
   longitude: number;
+  openingHours?: string;
+  equipments?: [];
+  ratings?: [];
 };
 
-export type CommentRead = {
+export type RatingWrite = {
   id: number;
-  description: string;
-  user: User;
-  playground: Playground;
-  rating: number;
-};
-
-export type CommentWrite = {
-  id: number;
-  description: string;
+  score: number;
+  comment?: string;
   userId: number;
   playgroundId: number;
-  rating: number;
 };

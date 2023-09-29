@@ -11,7 +11,7 @@ playgroundRouter.get('/', async (request, response) => {
     const playgrounds = await PlaygroundService.listPlaygrounds();
     return response.status(200).json(playgrounds);
   } catch (error: any) {
-    return response.status(500).json(error.message);
+    return response.status(500).json({ errors: error.message, success: false });
   }
 });
 
@@ -26,18 +26,19 @@ playgroundRouter.get('/:id', async (request, response) => {
     }
     return response.status(404).json('Playground could not be found');
   } catch (error: any) {
-    return response.status(500).json(error.message);
+    return response.status(500).json({ errors: error.message, success: false });
   }
 });
 
 // POST: Create a playground
-// Params: name, address, latitude, longitude
+// Params: name, address, latitude, longitude, openingHours?
 playgroundRouter.post(
   '/',
   body('name').isString(),
   body('address').isString(),
-  body('latitude').isDecimal(),
-  body('longitude').isDecimal(),
+  body('latitude').isFloat(),
+  body('longitude').isFloat(),
+  body('openingHours').isString().optional({ nullable: true }),
   async (request, response) => {
     const errors = validationResult(request);
 
@@ -52,7 +53,9 @@ playgroundRouter.post(
       );
       return response.status(201).json(newPlayground);
     } catch (error: any) {
-      return response.status(500).json(error.message);
+      return response
+        .status(500)
+        .json({ errors: error.message, success: false });
     }
   }
 );
@@ -84,7 +87,7 @@ playgroundRouter.put(
     } catch (error: any) {
       return response
         .status(500)
-        .json({ error: error.meta.cause, success: false });
+        .json({ errors: error.message, success: false });
     }
   }
 );
@@ -99,8 +102,6 @@ playgroundRouter.delete('/:id', async (request, response) => {
       .status(204)
       .json('Playground has been successfully deleted');
   } catch (error: any) {
-    return response
-      .status(500)
-      .json({ error: error.meta.cause, success: false });
+    return response.status(500).json({ errors: error.message, success: false });
   }
 });

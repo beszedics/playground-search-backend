@@ -9,6 +9,8 @@ export const listUsers = async () => {
       username: true,
       firstName: true,
       lastName: true,
+      createdAt: true,
+      updatedAt: true,
     },
   });
 };
@@ -17,6 +19,52 @@ export const getUser = async (id: number) => {
   return db.user.findUnique({
     where: {
       id,
+    },
+    select: {
+      id: true,
+      email: true,
+      username: true,
+      firstName: true,
+      lastName: true,
+      ratings: {
+        select: {
+          id: true,
+          score: true,
+          comment: true,
+          playground: {
+            select: {
+              id: true,
+              name: true,
+              address: true,
+              latitude: true,
+              longitude: true,
+              openingHours: true,
+              createdAt: true,
+              updatedAt: true,
+            },
+          },
+          createdAt: true,
+          updatedAt: true,
+        },
+      },
+      playgrounds: {
+        select: {
+          playground: {
+            select: {
+              id: true,
+              name: true,
+              address: true,
+              latitude: true,
+              longitude: true,
+              openingHours: true,
+              createdAt: true,
+              updatedAt: true,
+            },
+          },
+        },
+      },
+      createdAt: true,
+      updatedAt: true,
     },
   });
 };

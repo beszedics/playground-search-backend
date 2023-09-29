@@ -11,9 +11,7 @@ userRouter.get('/', async (request, response) => {
     const users = await UserService.listUsers();
     return response.status(200).json(users);
   } catch (error: any) {
-    return response
-      .status(500)
-      .json({ error: error.meta.cause, success: false });
+    return response.status(500).json({ errors: error.message, success: false });
   }
 });
 
@@ -28,9 +26,7 @@ userRouter.get('/:id', async (request, response) => {
     }
     return response.status(404).json('User could not be found');
   } catch (error: any) {
-    return response
-      .status(500)
-      .json({ error: error.meta.cause, success: false });
+    return response.status(500).json({ errors: error.message, success: false });
   }
 });
 
@@ -57,7 +53,7 @@ userRouter.post(
     } catch (error: any) {
       return response
         .status(500)
-        .json({ error: error.meta.cause, success: false });
+        .json({ error: error.message, success: false });
     }
   }
 );
@@ -87,7 +83,7 @@ userRouter.put(
     } catch (error: any) {
       return response
         .status(500)
-        .json({ error: error.meta.cause, success: false });
+        .json({ errors: error.message, success: false });
     }
   }
 );
@@ -100,8 +96,6 @@ userRouter.delete('/:id', async (request, response) => {
     await UserService.deleteUser(id);
     return response.status(204).json('User has been successfully deleted');
   } catch (error: any) {
-    return response
-      .status(500)
-      .json({ error: error.meta.cause, success: false });
+    return response.status(500).json({ errors: error.message, success: false });
   }
 });
