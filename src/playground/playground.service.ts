@@ -66,9 +66,12 @@ export const listPlaygrounds = async () => {
 
     const totalRating = ratings.reduce((acc, rating) => acc + rating.score, 0);
     const averageRating = Number((totalRating / ratings.length).toFixed(2));
+    const totalReviews = ratings.length;
+
     return {
       ...playground,
       averageRating,
+      totalReviews,
     };
   });
 
@@ -126,10 +129,12 @@ export const getPlayground = async (id: number) => {
 
   const totalRating = ratings.reduce((acc, rating) => acc + rating.score, 0);
   const averageRating = Number((totalRating / ratings.length).toFixed(2));
+  const totalReviews = ratings.length;
 
   return {
     ...playground,
     averageRating,
+    totalReviews,
   };
 };
 
