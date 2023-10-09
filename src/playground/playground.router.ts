@@ -9,6 +9,13 @@ export const playgroundRouter = express.Router();
 playgroundRouter.get('/', async (request, response) => {
   try {
     const playgrounds = await PlaygroundService.listPlaygrounds();
+
+    const totalPlaygrounds = playgrounds.length;
+    response.setHeader(
+      'Content-Range',
+      `users 0-${totalPlaygrounds - 1}/${totalPlaygrounds}`
+    );
+
     return response.status(200).json(playgrounds);
   } catch (error: any) {
     return response.status(500).json({ errors: error.message, success: false });

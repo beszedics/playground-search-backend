@@ -11,9 +11,9 @@ export const authRouter = express.Router();
 
 authRouter.post(
   '/register',
-  body('email').isEmail(),
-  body('username').isString(),
-  body('password').isString(),
+  body('email').isEmail().notEmpty().withMessage('Email is required'),
+  body('username').isString().notEmpty().withMessage('Username is required'),
+  body('password').isString().notEmpty().withMessage('Password is required'),
   body('firstName').isString(),
   body('lastName').isString(),
   async (request, response) => {
@@ -36,7 +36,6 @@ authRouter.post(
       }
 
       if (userByUsername) {
-        console.log(userByUsername);
         return response
           .status(409)
           .json({ errors: 'Username already exists', success: false });
@@ -60,8 +59,8 @@ authRouter.post(
 
 authRouter.post(
   '/login',
-  body('username').isString(),
-  body('password').isString(),
+  body('username').isString().withMessage('Username is required'),
+  body('password').isString().withMessage('Password is required'),
   async (request, response) => {
     const { username, password: inputPassword } = request.body;
     try {

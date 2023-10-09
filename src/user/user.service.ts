@@ -9,6 +9,7 @@ export const listUsers = async () => {
       username: true,
       firstName: true,
       lastName: true,
+      isAdmin: true,
       createdAt: true,
       updatedAt: true,
     },
@@ -24,8 +25,10 @@ export const getUser = async (id: number) => {
       id: true,
       email: true,
       username: true,
+      password: true,
       firstName: true,
       lastName: true,
+      isAdmin: true,
       ratings: {
         select: {
           id: true,
@@ -90,7 +93,7 @@ export const createUser = async (user: Omit<User, 'id'>) => {
 };
 
 export const updateUser = async (user: Omit<User, 'id'>, id: number) => {
-  const { username, email, password, firstName, lastName } = user;
+  const { username, email, password, firstName, lastName, isAdmin } = user;
   return db.user.update({
     where: {
       id,
@@ -101,13 +104,16 @@ export const updateUser = async (user: Omit<User, 'id'>, id: number) => {
       password,
       firstName,
       lastName,
+      isAdmin,
     },
     select: {
       id: true,
       username: true,
+      password: true,
       email: true,
       firstName: true,
       lastName: true,
+      isAdmin: true,
     },
   });
 };

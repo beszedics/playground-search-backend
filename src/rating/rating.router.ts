@@ -9,6 +9,13 @@ export const ratingRouter = express.Router();
 ratingRouter.get('/', async (request, response) => {
   try {
     const ratings = await RatingService.listRatings();
+
+    const totalRatings = ratings.length;
+    response.setHeader(
+      'Content-Range',
+      `users 0-${totalRatings - 1}/${totalRatings}`
+    );
+
     return response.status(200).json(ratings);
   } catch (error: any) {
     return response.status(500).json({ errors: error.message, success: false });

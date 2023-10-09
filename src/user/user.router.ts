@@ -9,6 +9,13 @@ export const userRouter = express.Router();
 userRouter.get('/', async (request, response) => {
   try {
     const users = await UserService.listUsers();
+
+    const totalUsers = users.length;
+    response.setHeader(
+      'Content-Range',
+      `users 0-${totalUsers - 1}/${totalUsers}`
+    );
+
     return response.status(200).json(users);
   } catch (error: any) {
     return response.status(500).json({ errors: error.message, success: false });
