@@ -10,6 +10,7 @@ export const listPlaygrounds = async () => {
       latitude: true,
       longitude: true,
       openingHours: true,
+      isPublished: true,
       equipments: {
         select: {
           equipment: {
@@ -147,6 +148,7 @@ export const createPlayground = async (playground: Playground) => {
       latitude,
       longitude,
       openingHours,
+      isPublished: false,
     },
     select: {
       id: true,
@@ -155,6 +157,7 @@ export const createPlayground = async (playground: Playground) => {
       latitude: true,
       longitude: true,
       openingHours: true,
+      isPublished: true,
     },
   });
 };
@@ -163,7 +166,7 @@ export const updatePlayground = async (
   playground: Omit<Playground, 'id'>,
   id: number
 ) => {
-  const { name, address, latitude, longitude } = playground;
+  const { name, address, latitude, longitude, isPublished } = playground;
   return db.playground.update({
     where: {
       id,
@@ -173,6 +176,7 @@ export const updatePlayground = async (
       address,
       latitude,
       longitude,
+      isPublished,
     },
     select: {
       id: true,
@@ -180,6 +184,7 @@ export const updatePlayground = async (
       address: true,
       latitude: true,
       longitude: true,
+      isPublished: true,
     },
   });
 };
