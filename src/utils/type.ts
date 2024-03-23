@@ -15,6 +15,7 @@ export type Playground = {
   latitude: number;
   longitude: number;
   openingHours?: string;
+  isPublished: boolean;
   equipments?: [];
   ratings?: [];
 };
