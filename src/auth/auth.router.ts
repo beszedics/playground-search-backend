@@ -5,12 +5,22 @@ import * as AuthService from './auth.service';
 import * as UserService from '../user/user.service';
 import { compareSync, hashSync } from 'bcryptjs';
 
+import dotenv from 'dotenv';
+import { generateToken, verifyToken } from '../middleware/authJWT';
+import { User } from '../utils/type';
+
+dotenv.config();
+
 const SALT = 10;
+
+interface CustomRequest {
+  user: User; // Adjust this type to match your User model
+}
 
 export const authRouter = express.Router();
 
 authRouter.post(
-  '/register',
+  '/registration',
   body('email').isEmail().notEmpty().withMessage('Email is required'),
   body('username').isString().notEmpty().withMessage('Username is required'),
   body('password').isString().notEmpty().withMessage('Password is required'),
@@ -32,13 +42,13 @@ authRouter.post(
       if (userByEmail) {
         return response
           .status(409)
-          .json({ errors: 'Email already exists', success: false });
+          .json({ errors: 'Email is already exists', success: false });
       }
 
       if (userByUsername) {
         return response
           .status(409)
-          .json({ errors: 'Username already exists', success: false });
+          .json({ errors: 'Username is already exists', success: false });
       }
 
       const user = request.body;
@@ -48,8 +58,14 @@ authRouter.post(
         ...user,
         password: hashedPassword,
       });
-      return response.status(200).json({ user: createdUser, success: true });
+
+      return response.status(200).json({
+        user: createdUser,
+        message: 'User created successfully',
+        success: true,
+      });
     } catch (error: any) {
+      console.log(error);
       return response
         .status(500)
         .json({ errors: error.message, success: false });
@@ -82,9 +98,14 @@ authRouter.post(
 
       const { password, ...userWithoutPassword } = user;
 
-      return response
-        .status(200)
-        .json({ user: userWithoutPassword, success: true });
+      const token = generateToken(userWithoutPassword);
+
+      return response.status(200).json({
+        user: userWithoutPassword,
+        token: token,
+        message: 'Login successful',
+        success: true,
+      });
     } catch (error: any) {
       return response
         .status(500)

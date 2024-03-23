@@ -2,6 +2,7 @@ import express, { response } from 'express';
 import { body, validationResult } from 'express-validator';
 
 import * as PlaygroundService from './playground.service';
+import { verifyToken } from '../middleware/authJWT';
 
 export const playgroundRouter = express.Router();
 
@@ -46,6 +47,7 @@ playgroundRouter.post(
   body('latitude').isFloat(),
   body('longitude').isFloat(),
   body('openingHours').isString().optional({ nullable: true }),
+  verifyToken,
   async (request, response) => {
     const errors = validationResult(request);
 

@@ -56,7 +56,13 @@ userRouter.post(
     try {
       const user = request.body;
       const newUser = await UserService.createUser(user);
-      return response.status(201).json(newUser);
+      return response
+        .status(201)
+        .json({
+          user: newUser,
+          message: 'User created successfully',
+          success: true,
+        });
     } catch (error: any) {
       return response
         .status(500)
