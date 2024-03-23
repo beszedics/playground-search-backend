@@ -88,6 +88,7 @@ export const createUser = async (user: Omit<User, 'id'>) => {
       email: true,
       firstName: true,
       lastName: true,
+      isAdmin: true,
     },
   });
 };
