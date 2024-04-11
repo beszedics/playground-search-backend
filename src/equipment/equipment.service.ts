@@ -28,6 +28,18 @@ export const listEquipments = async () => {
   });
 };
 
+export const listEquipmentsWithoutPlaygrounds = async () => {
+  return db.equipment.findMany({
+    select: {
+      id: true,
+      name: true,
+      description: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+};
+
 export const getEquipment = async (id: number) => {
   return db.equipment.findUnique({
     where: {

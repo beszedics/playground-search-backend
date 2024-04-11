@@ -30,6 +30,9 @@ export const getUser = async (id: number) => {
       lastName: true,
       isAdmin: true,
       ratings: {
+        where: {
+          id,
+        },
         select: {
           id: true,
           score: true,
@@ -125,4 +128,65 @@ export const deleteUser = async (id: number) => {
       id,
     },
   });
+};
+
+export const createFavoritePlayground = async (
+  userId: number,
+  playgroundId: number
+) => {
+  return db.userPlayground.create({
+    data: {
+      userId,
+      playgroundId,
+    },
+  });
+};
+
+export const getUserFavoritePlayground = async (
+  id: number,
+  playgroundId: number
+) => {
+  return db.user.findUnique({
+    where: {
+      id,
+    },
+    select: {
+      id: true,
+      email: true,
+      username: true,
+      playgrounds: {
+        where: {
+          playgroundId,
+        },
+        select: {
+          playground: {
+            select: {
+              id: true,
+              name: true,
+              address: true,
+              latitude: true,
+              longitude: true,
+              openingHours: true,
+              createdAt: true,
+              updatedAt: true,
+            },
+          },
+        },
+      },
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+};
+
+export const deleteFavoritePlayground = async (
+  userId: number,
+  playgroundId: number
+) => {
+  // return db.userPlayground.delete({
+  //   where: {
+  //     userId,
+  //     playgroundId,
+  //   },
+  // });
 };

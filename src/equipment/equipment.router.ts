@@ -22,6 +22,16 @@ equipmentRouter.get('/', async (request, response) => {
   }
 });
 
+equipmentRouter.get('/nonplayground', async (request, response) => {
+  try {
+    const equipments =
+      await EquipmentService.listEquipmentsWithoutPlaygrounds();
+    return response.status(200).json(equipments);
+  } catch (error: any) {
+    return response.status(500).json({ errors: error.message, success: false });
+  }
+});
+
 // GET: Get a single equipment by ID
 equipmentRouter.get('/:id', async (request, response) => {
   const id = parseInt(request.params.id, 10);
