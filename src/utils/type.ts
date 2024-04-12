@@ -1,3 +1,5 @@
+import { Role } from '@prisma/client';
+
 export type User = {
   id: number;
   email: string;
@@ -5,6 +7,7 @@ export type User = {
   firstName: string;
   lastName: string;
   isAdmin: boolean;
+  role: Role;
   password: string;
 };
 

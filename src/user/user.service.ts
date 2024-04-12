@@ -10,6 +10,7 @@ export const listUsers = async () => {
       firstName: true,
       lastName: true,
       isAdmin: true,
+      role: true,
       createdAt: true,
       updatedAt: true,
     },
@@ -29,6 +30,7 @@ export const getUser = async (id: number) => {
       firstName: true,
       lastName: true,
       isAdmin: true,
+      role: true,
       ratings: {
         where: {
           id,
@@ -92,6 +94,7 @@ export const createUser = async (user: Omit<User, 'id'>) => {
       firstName: true,
       lastName: true,
       isAdmin: true,
+      role: true,
     },
   });
 };

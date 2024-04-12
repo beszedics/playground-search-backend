@@ -13,6 +13,7 @@ export const generateToken = (user: Omit<User, 'password'>) => {
     firstName: user.firstName,
     lastName: user.lastName,
     isAdmin: user.isAdmin,
+    role: user.role,
   };
   return sign(payload, process.env.JWT_SECRET!, {
     expiresIn: '1h',
