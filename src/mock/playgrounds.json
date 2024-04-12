@@ -1,0 +1,445 @@
+[
+  {
+    "id": 18,
+    "name": "Gesztenyés úti játszótér",
+    "address": "Etyek, Gesztenyés út 5, 2091",
+    "latitude": "47.461647211109515",
+    "longitude": "18.721090672370043",
+    "openingHours": null,
+    "isPublished": true,
+    "equipments": [],
+    "ratings": [
+      {
+        "id": 11,
+        "score": 3,
+        "comment": "Elmegy...",
+        "playground": {
+          "id": 18,
+          "name": "Gesztenyés úti játszótér",
+          "address": "Etyek, Gesztenyés út 5, 2091",
+          "latitude": "47.461647211109515",
+          "longitude": "18.721090672370043",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2023-11-16T13:52:51.000Z",
+        "updatedAt": "2023-11-16T13:52:52.000Z"
+      },
+      {
+        "id": 16,
+        "score": 4,
+        "comment": "2024.03.23.",
+        "playground": {
+          "id": 18,
+          "name": "Gesztenyés úti játszótér",
+          "address": "Etyek, Gesztenyés út 5, 2091",
+          "latitude": "47.461647211109515",
+          "longitude": "18.721090672370043",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2024-03-23T15:51:43.801Z",
+        "updatedAt": "2024-03-23T15:51:43.801Z"
+      },
+      {
+        "id": 27,
+        "score": 2,
+        "comment": "itt most",
+        "playground": {
+          "id": 18,
+          "name": "Gesztenyés úti játszótér",
+          "address": "Etyek, Gesztenyés út 5, 2091",
+          "latitude": "47.461647211109515",
+          "longitude": "18.721090672370043",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1515151515,
+          "username": "anonymus",
+          "firstName": "anonymus",
+          "lastName": "anonymus"
+        },
+        "createdAt": "2024-03-23T16:58:07.203Z",
+        "updatedAt": "2024-03-23T16:58:07.203Z"
+      },
+      {
+        "id": 29,
+        "score": 4,
+        "comment": "A játszótér megfelelően felszerelt, de lehetne javítani a minőségükön",
+        "playground": {
+          "id": 18,
+          "name": "Gesztenyés úti játszótér",
+          "address": "Etyek, Gesztenyés út 5, 2091",
+          "latitude": "47.461647211109515",
+          "longitude": "18.721090672370043",
+          "openingHours": null
+        },
+        "user": {
+          "id": 45,
+          "username": "test",
+          "firstName": "Test",
+          "lastName": "Test"
+        },
+        "createdAt": "2024-03-25T08:47:33.123Z",
+        "updatedAt": "2024-03-25T08:47:33.123Z"
+      }
+    ],
+    "createdAt": "2023-10-24T21:08:06.000Z",
+    "updatedAt": "2023-10-24T21:08:08.000Z",
+    "averageRating": 3.25,
+    "totalReviews": 4
+  },
+  {
+    "id": 20,
+    "name": "Családi játszótér",
+    "address": "Komárom, Szent László u. 23, 2900",
+    "latitude": "47.750548991175854",
+    "longitude": "18.11574902507603",
+    "openingHours": null,
+    "isPublished": true,
+    "equipments": [],
+    "ratings": [
+      {
+        "id": 13,
+        "score": 3,
+        "comment": "Elmegy",
+        "playground": {
+          "id": 20,
+          "name": "Családi játszótér",
+          "address": "Komárom, Szent László u. 23, 2900",
+          "latitude": "47.750548991175854",
+          "longitude": "18.11574902507603",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2023-11-16T13:57:21.000Z",
+        "updatedAt": "2023-11-16T13:57:23.000Z"
+      },
+      {
+        "id": 14,
+        "score": 3,
+        "comment": "Nem rossz, de lehetne jobb.",
+        "playground": {
+          "id": 20,
+          "name": "Családi játszótér",
+          "address": "Komárom, Szent László u. 23, 2900",
+          "latitude": "47.750548991175854",
+          "longitude": "18.11574902507603",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2023-11-16T13:57:42.000Z",
+        "updatedAt": "2023-11-16T13:57:44.000Z"
+      }
+    ],
+    "createdAt": "2023-10-24T21:09:27.000Z",
+    "updatedAt": "2023-10-24T21:09:30.000Z",
+    "averageRating": 3,
+    "totalReviews": 2
+  },
+  {
+    "id": 1,
+    "name": "Nagybácsai játszótér",
+    "address": "Győr, Úttörő u. 1, 9030",
+    "latitude": "47.73067808481319",
+    "longitude": "17.665176904078063",
+    "openingHours": null,
+    "isPublished": true,
+    "equipments": [
+      {
+        "equipment": {
+          "id": 1,
+          "name": "sandbox",
+          "description": null,
+          "createdAt": "2023-09-29T21:28:05.000Z",
+          "updatedAt": "2023-09-29T21:28:11.000Z"
+        }
+      },
+      {
+        "equipment": {
+          "id": 2,
+          "name": "swing",
+          "description": null,
+          "createdAt": "2023-09-29T21:28:23.000Z",
+          "updatedAt": "2023-09-29T21:28:24.000Z"
+        }
+      }
+    ],
+    "ratings": [
+      {
+        "id": 2,
+        "score": 5,
+        "comment": "Tökéletes!!!",
+        "playground": {
+          "id": 1,
+          "name": "Nagybácsai játszótér",
+          "address": "Győr, Úttörő u. 1, 9030",
+          "latitude": "47.73067808481319",
+          "longitude": "17.665176904078063",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2023-09-29T20:27:45.000Z",
+        "updatedAt": "2023-09-29T20:27:48.000Z"
+      },
+      {
+        "id": 3,
+        "score": 4,
+        "comment": null,
+        "playground": {
+          "id": 1,
+          "name": "Nagybácsai játszótér",
+          "address": "Győr, Úttörő u. 1, 9030",
+          "latitude": "47.73067808481319",
+          "longitude": "17.665176904078063",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2023-09-29T20:41:44.000Z",
+        "updatedAt": "2023-09-29T20:41:49.000Z"
+      },
+      {
+        "id": 4,
+        "score": 2,
+        "comment": "Nem megfelelő a mászóka",
+        "playground": {
+          "id": 1,
+          "name": "Nagybácsai játszótér",
+          "address": "Győr, Úttörő u. 1, 9030",
+          "latitude": "47.73067808481319",
+          "longitude": "17.665176904078063",
+          "openingHours": null
+        },
+        "user": {
+          "id": 2,
+          "username": "eszterkalameny",
+          "firstName": "Eszter",
+          "lastName": "Dr. Kalamény"
+        },
+        "createdAt": "2023-09-29T21:00:43.000Z",
+        "updatedAt": "2023-09-29T21:00:50.000Z"
+      },
+      {
+        "id": 6,
+        "score": 1,
+        "comment": "Nagyon rossz, nem megyünk többet!",
+        "playground": {
+          "id": 1,
+          "name": "Nagybácsai játszótér",
+          "address": "Győr, Úttörő u. 1, 9030",
+          "latitude": "47.73067808481319",
+          "longitude": "17.665176904078063",
+          "openingHours": null
+        },
+        "user": {
+          "id": 2,
+          "username": "eszterkalameny",
+          "firstName": "Eszter",
+          "lastName": "Dr. Kalamény"
+        },
+        "createdAt": "2023-09-29T20:23:12.656Z",
+        "updatedAt": "2023-09-29T20:23:12.656Z"
+      },
+      {
+        "id": 7,
+        "score": 3,
+        "comment": "Közepes, fejlesztésre szorul",
+        "playground": {
+          "id": 1,
+          "name": "Nagybácsai játszótér",
+          "address": "Győr, Úttörő u. 1, 9030",
+          "latitude": "47.73067808481319",
+          "longitude": "17.665176904078063",
+          "openingHours": null
+        },
+        "user": {
+          "id": 2,
+          "username": "eszterkalameny",
+          "firstName": "Eszter",
+          "lastName": "Dr. Kalamény"
+        },
+        "createdAt": "2023-09-29T20:24:12.824Z",
+        "updatedAt": "2023-09-29T20:24:12.824Z"
+      },
+      {
+        "id": 1,
+        "score": 5,
+        "comment": "Kifogásolhatatlan!!!!!",
+        "playground": {
+          "id": 1,
+          "name": "Nagybácsai játszótér",
+          "address": "Győr, Úttörő u. 1, 9030",
+          "latitude": "47.73067808481319",
+          "longitude": "17.665176904078063",
+          "openingHours": null
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2023-09-29T20:26:53.000Z",
+        "updatedAt": "2023-09-29T22:07:01.642Z"
+      }
+    ],
+    "createdAt": "2023-09-29T20:26:35.000Z",
+    "updatedAt": "2023-10-25T12:17:06.203Z",
+    "averageRating": 3.33,
+    "totalReviews": 6
+  },
+  {
+    "id": 16,
+    "name": "Városligeti Nagyjátszótér",
+    "address": "Budapest, Ajtósi Dürer sor 15, 1146",
+    "latitude": "47.511798606096654",
+    "longitude": "19.08605350279434",
+    "openingHours": null,
+    "isPublished": true,
+    "equipments": [],
+    "ratings": [],
+    "createdAt": "2023-10-24T00:00:00.000Z",
+    "updatedAt": "2023-10-25T13:24:29.938Z",
+    "averageRating": 0
+  },
+  {
+    "id": 17,
+    "name": "Móricz-ligeti játszótér",
+    "address": "Herceghalom, Árvalányhaj u. 14, 2053",
+    "latitude": "47.49923637303041",
+    "longitude": "18.738600133497886",
+    "openingHours": null,
+    "isPublished": false,
+    "equipments": [],
+    "ratings": [],
+    "createdAt": "2023-10-24T21:07:19.000Z",
+    "updatedAt": "2023-11-16T12:45:15.148Z",
+    "averageRating": 0
+  },
+  {
+    "id": 14,
+    "name": "Pom Pom játszótér",
+    "address": "Budapest, Dezső u. 11, 1016",
+    "latitude": "47.49574226316943",
+    "longitude": "19.03238648002712",
+    "openingHours": "8:00 - 18:00",
+    "isPublished": false,
+    "equipments": [],
+    "ratings": [],
+    "createdAt": "2023-10-20T15:14:19.316Z",
+    "updatedAt": "2023-11-16T12:45:33.308Z",
+    "averageRating": 0
+  },
+  {
+    "id": 19,
+    "name": "Építők parkja",
+    "address": "Tata, Tópart stny., 2890",
+    "latitude": "47.64252583752073",
+    "longitude": "18.340227078246922",
+    "openingHours": "8:00 - 20:00",
+    "isPublished": true,
+    "equipments": [],
+    "ratings": [],
+    "createdAt": "2023-10-24T21:08:42.000Z",
+    "updatedAt": "2023-10-24T21:08:44.000Z",
+    "averageRating": 0
+  },
+  {
+    "id": 5,
+    "name": "Cerka-firka Játszótér",
+    "address": "Budapest, Búsuló Juhász, 1118",
+    "latitude": "47.4866000534845",
+    "longitude": "19.044090785547994",
+    "openingHours": "0:00 - 24:00",
+    "isPublished": true,
+    "equipments": [
+      {
+        "equipment": {
+          "id": 4,
+          "name": "balancing bridge",
+          "description": null,
+          "createdAt": "2023-09-29T21:28:46.000Z",
+          "updatedAt": "2023-09-29T21:28:47.000Z"
+        }
+      }
+    ],
+    "ratings": [
+      {
+        "id": 15,
+        "score": 4,
+        "comment": "fasf",
+        "playground": {
+          "id": 5,
+          "name": "Cerka-firka Játszótér",
+          "address": "Budapest, Búsuló Juhász, 1118",
+          "latitude": "47.4866000534845",
+          "longitude": "19.044090785547994",
+          "openingHours": "0:00 - 24:00"
+        },
+        "user": {
+          "id": 1,
+          "username": "admin",
+          "firstName": "admin",
+          "lastName": "admin"
+        },
+        "createdAt": "2024-03-23T09:35:38.935Z",
+        "updatedAt": "2024-03-23T09:35:38.935Z"
+      },
+      {
+        "id": 28,
+        "score": 2,
+        "comment": "test",
+        "playground": {
+          "id": 5,
+          "name": "Cerka-firka Játszótér",
+          "address": "Budapest, Búsuló Juhász, 1118",
+          "latitude": "47.4866000534845",
+          "longitude": "19.044090785547994",
+          "openingHours": "0:00 - 24:00"
+        },
+        "user": {
+          "id": 1515151515,
+          "username": "anonymus",
+          "firstName": "anonymus",
+          "lastName": "anonymus"
+        },
+        "createdAt": "2024-03-24T09:59:16.568Z",
+        "updatedAt": "2024-03-24T09:59:16.568Z"
+      }
+    ],
+    "createdAt": "2023-09-29T21:31:32.567Z",
+    "updatedAt": "2023-10-24T21:02:11.000Z",
+    "averageRating": 3,
+    "totalReviews": 2
+  }
+]

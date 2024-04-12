@@ -1,0 +1,23 @@
+{
+  "id": 1,
+  "score": 5,
+  "comment": "Kifogásolhatatlan!!!!!",
+  "playground": {
+    "id": 1,
+    "name": "Nagybácsai játszótér",
+    "address": "Győr, Úttörő u. 1, 9030",
+    "latitude": "47.73067808481319",
+    "longitude": "17.665176904078063",
+    "openingHours": null,
+    "createdAt": "2023-09-29T20:26:35.000Z",
+    "updatedAt": "2023-10-25T12:17:06.203Z"
+  },
+  "user": {
+    "id": 1,
+    "username": "admin",
+    "firstName": "admin",
+    "lastName": "admin"
+  },
+  "createdAt": "2023-09-29T20:26:53.000Z",
+  "updatedAt": "2023-09-29T22:07:01.642Z"
+}
