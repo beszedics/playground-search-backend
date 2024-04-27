@@ -114,3 +114,37 @@ playgroundRouter.delete('/:id', async (request, response) => {
     return response.status(500).json({ errors: error.message, success: false });
   }
 });
+
+playgroundRouter.get('/:id/equipments', async (request, response) => {
+  const id = parseInt(request.params?.id, 10);
+
+  try {
+    const playgroundEquipments =
+      await PlaygroundService.getPlaygroundEquipments(id);
+    if (playgroundEquipments) {
+      return response.status(200).json(playgroundEquipments);
+    }
+    return response.status(404).json('PlaygroundEquipments could not be found');
+  } catch (error: any) {
+    return response.status(500).json({ errors: error.message, success: false });
+  }
+});
+
+playgroundRouter.put('/:id/equipments', async (request, response) => {
+  const playgroundId = parseInt(request.params?.id, 10);
+  const equipmentIds: number[] = request.body.equipmentIds;
+
+  try {
+    const playgroundEquipments =
+      await PlaygroundService.updatePlaygroundEquipments(
+        playgroundId,
+        equipmentIds
+      );
+    if (playgroundEquipments) {
+      return response.status(200).json(playgroundEquipments);
+    }
+    return response.status(404).json('PlaygroundEquipments could not be found');
+  } catch (error: any) {
+    return response.status(500).json({ errors: error.message, success: false });
+  }
+});

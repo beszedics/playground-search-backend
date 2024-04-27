@@ -196,3 +196,104 @@ export const deletePlayground = async (id: number) => {
     },
   });
 };
+
+export const getPlaygroundEquipments = async (id: number) => {
+  const playgroundEquipments = await db.playground.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      equipments: {
+        select: {
+          equipment: {
+            select: {
+              id: true,
+              name: true,
+              description: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  if (!playgroundEquipments) {
+    throw new Error('Playground not found');
+  }
+
+  return playgroundEquipments;
+};
+
+export const updatePlaygroundEquipments = async (
+  id: number,
+  equipmentIds: number[]
+) => {
+  try {
+    // Find the playground by id
+    const playground = await db.playground.findUnique({
+      where: {
+        id: id,
+      },
+    });
+
+    if (!playground) {
+      throw new Error('Playground not found');
+    }
+
+    // Get existing equipment relations
+    const existingEquipmentRelations = await db.playgroundEquipment.findMany({
+      where: {
+        playgroundId: id,
+      },
+    });
+
+    // Extract existing equipment ids
+    const existingEquipmentIds = existingEquipmentRelations.map(
+      (relation) => relation.equipmentId
+    );
+
+    // Calculate ids to be added and removed
+    const idsToAdd = equipmentIds.filter(
+      (equipmentId) => !existingEquipmentIds.includes(equipmentId)
+    );
+    const idsToRemove = existingEquipmentIds.filter(
+      (existingId) => !equipmentIds.includes(existingId)
+    );
+
+    // Remove equipment relations to be removed
+    await Promise.all(
+      idsToRemove.map((equipmentId) =>
+        db.playgroundEquipment.deleteMany({
+          where: {
+            playgroundId: id,
+            equipmentId: equipmentId,
+          },
+        })
+      )
+    );
+
+    // Add equipment relations to be added
+    await Promise.all(
+      idsToAdd.map((equipmentId) =>
+        db.playgroundEquipment.create({
+          data: {
+            playground: {
+              connect: {
+                id: id,
+              },
+            },
+            equipment: {
+              connect: {
+                id: equipmentId,
+              },
+            },
+          },
+        })
+      )
+    );
+
+    return 'Playground equipments updated successfully';
+  } catch (error: any) {
+    return error.message;
+  }
+};
