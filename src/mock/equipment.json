@@ -1,0 +1,21 @@
+{
+  "id": 1,
+  "name": "sandbox",
+  "description": null,
+  "playgrounds": [
+    {
+      "playground": {
+        "id": 1,
+        "name": "Nagybácsai játszótér",
+        "address": "Győr, Úttörő u. 1, 9030",
+        "latitude": "47.73067808481319",
+        "longitude": "17.665176904078063",
+        "openingHours": null,
+        "createdAt": "2023-09-29T20:26:35.000Z",
+        "updatedAt": "2023-10-25T12:17:06.203Z"
+      }
+    }
+  ],
+  "createdAt": "2023-09-29T21:28:05.000Z",
+  "updatedAt": "2023-09-29T21:28:11.000Z"
+}

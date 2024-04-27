@@ -7,15 +7,10 @@ import { compareSync, hashSync } from 'bcryptjs';
 
 import dotenv from 'dotenv';
 import { generateToken, verifyToken } from '../middleware/authJWT';
-import { User } from '../utils/type';
 
 dotenv.config();
 
 const SALT = 10;
-
-interface CustomRequest {
-  user: User; // Adjust this type to match your User model
-}
 
 export const authRouter = express.Router();
 

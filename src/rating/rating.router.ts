@@ -77,7 +77,7 @@ ratingRouter.put(
     .withMessage('Score must be between 0 and 5'),
   body('comment').isString().optional({ nullable: true }),
   body('userId').isInt().withMessage('userId is required'),
-  body('playgroundId').isInt().withMessage('playgroundId is required!'),
+  body('playgroundId').isInt().withMessage('playgroundId is required'),
   async (request, response) => {
     const errors = validationResult(request);
 

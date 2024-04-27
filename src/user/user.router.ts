@@ -56,13 +56,11 @@ userRouter.post(
     try {
       const user = request.body;
       const newUser = await UserService.createUser(user);
-      return response
-        .status(201)
-        .json({
-          user: newUser,
-          message: 'User created successfully',
-          success: true,
-        });
+      return response.status(201).json({
+        user: newUser,
+        message: 'User created successfully',
+        success: true,
+      });
     } catch (error: any) {
       return response
         .status(500)
@@ -112,3 +110,64 @@ userRouter.delete('/:id', async (request, response) => {
     return response.status(500).json({ errors: error.message, success: false });
   }
 });
+
+userRouter.post(
+  '/:id/favorite',
+  body('userId').isInt().withMessage('userId is required'),
+  body('playgroundId').isInt().withMessage('playgroundId is required'),
+  async (request, response) => {
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return response.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const userId = request.body.userId;
+      const playgroundId = request.body.playgroundId;
+      const favoritePlayground = await UserService.createFavoritePlayground(
+        userId,
+        playgroundId
+      );
+      return response.status(201).json({
+        favoritePlayground: favoritePlayground,
+        message: 'Playground saved successfully to favorites',
+        success: true,
+      });
+    } catch (error: any) {
+      return response
+        .status(500)
+        .json({ error: error.message, success: false });
+    }
+  }
+);
+
+userRouter.get(
+  '/:id/favorite',
+  body('userId').isInt().withMessage('userId is required'),
+  body('playgroundId').isInt().withMessage('playgroundId is required!'),
+  async (request, response) => {
+    const errors = validationResult(request);
+
+    if (!errors.isEmpty()) {
+      return response.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const userId = request.body.userId;
+      const playgroundId = request.body.playgroundId;
+      const favoritePlayground = await UserService.getUserFavoritePlayground(
+        userId,
+        playgroundId
+      );
+      return response.status(200).json({
+        favoritePlayground: favoritePlayground,
+        success: true,
+      });
+    } catch (error: any) {
+      return response
+        .status(500)
+        .json({ error: error.message, success: false });
+    }
+  }
+);
