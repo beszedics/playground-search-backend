@@ -111,63 +111,40 @@ userRouter.delete('/:id', async (request, response) => {
   }
 });
 
-userRouter.post(
-  '/:id/favorite',
-  body('userId').isInt().withMessage('userId is required'),
-  body('playgroundId').isInt().withMessage('playgroundId is required'),
-  async (request, response) => {
-    const errors = validationResult(request);
+userRouter.post('/:id/favorite-playgrounds', async (request, response) => {
+  const userId = parseInt(request.params?.id, 10);
+  const playgroundId: number = parseInt(request.body.playgroundId);
 
-    if (!errors.isEmpty()) {
-      return response.status(400).json({ errors: errors.array() });
+  try {
+    const userFavoritePlaygrounds =
+      await UserService.getUserFavoritePlaygrounds(userId, playgroundId);
+    if (userFavoritePlaygrounds) {
+      return response.status(200).json(userFavoritePlaygrounds);
     }
-
-    try {
-      const userId = request.body.userId;
-      const playgroundId = request.body.playgroundId;
-      const favoritePlayground = await UserService.createFavoritePlayground(
-        userId,
-        playgroundId
-      );
-      return response.status(201).json({
-        favoritePlayground: favoritePlayground,
-        message: 'Playground saved successfully to favorites',
-        success: true,
-      });
-    } catch (error: any) {
-      return response
-        .status(500)
-        .json({ error: error.message, success: false });
-    }
+    return response
+      .status(404)
+      .json('UserFavoritePlayground could not be found');
+  } catch (error: any) {
+    return response.status(500).json({ errors: error.message, success: false });
   }
-);
+});
 
-userRouter.get(
-  '/:id/favorite',
-  body('userId').isInt().withMessage('userId is required'),
-  body('playgroundId').isInt().withMessage('playgroundId is required!'),
-  async (request, response) => {
-    const errors = validationResult(request);
+// PUT: Update user favorite playgrounds
+// Params: userId, playgroundId
+userRouter.put('/:id/favorite-playgrounds', async (request, response) => {
+  const userId = parseInt(request.params?.id, 10);
+  const playgroundId: number = parseInt(request.body.playgroundId);
 
-    if (!errors.isEmpty()) {
-      return response.status(400).json({ errors: errors.array() });
+  try {
+    const userFavoritePlaygrounds =
+      await UserService.updateUserFavoritePlayground(userId, playgroundId);
+    if (userFavoritePlaygrounds) {
+      return response.status(200).json(userFavoritePlaygrounds);
     }
-
-    try {
-      const userId = request.body.userId;
-      const playgroundId = request.body.playgroundId;
-      const favoritePlayground = await UserService.getUserFavoritePlayground(
-        userId,
-        playgroundId
-      );
-      return response.status(200).json({
-        favoritePlayground: favoritePlayground,
-        success: true,
-      });
-    } catch (error: any) {
-      return response
-        .status(500)
-        .json({ error: error.message, success: false });
-    }
+    return response
+      .status(404)
+      .json('UserFavoritePlayground could not be found');
+  } catch (error: any) {
+    return response.status(500).json({ errors: error.message, success: false });
   }
-);
+});
