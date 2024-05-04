@@ -22,7 +22,7 @@ equipmentRouter.get('/', async (request, response) => {
   }
 });
 
-equipmentRouter.get('/nonplayground', async (request, response) => {
+equipmentRouter.get('/available', async (request, response) => {
   try {
     const equipments =
       await EquipmentService.listEquipmentsWithoutPlaygrounds();
