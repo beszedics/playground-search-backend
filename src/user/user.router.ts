@@ -2,6 +2,9 @@ import express, { response } from 'express';
 import { body, validationResult } from 'express-validator';
 
 import * as UserService from './user.service';
+import { hashSync } from 'bcryptjs';
+import { PASSWORD_SALT } from '../utils/consts';
+import { generateToken } from '../middleware/authJWT';
 
 export const userRouter = express.Router();
 
@@ -89,8 +92,22 @@ userRouter.put(
 
     try {
       const user = request.body;
-      const updatedUser = await UserService.updateUser(user, id);
-      return response.status(200).json(updatedUser);
+      const { password } = request.body;
+
+      const hashedPassword = hashSync(password, PASSWORD_SALT);
+
+      const userWithHashedPassword = {
+        ...user,
+        password: hashedPassword,
+      };
+
+      const token = generateToken(userWithHashedPassword);
+
+      const updatedUser = await UserService.updateUser(
+        userWithHashedPassword,
+        id
+      );
+      return response.status(200).json({ updatedUser, token });
     } catch (error: any) {
       return response
         .status(500)
