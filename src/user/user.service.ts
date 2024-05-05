@@ -26,15 +26,11 @@ export const getUser = async (id: number) => {
       id: true,
       email: true,
       username: true,
-      password: true,
       firstName: true,
       lastName: true,
       isAdmin: true,
       role: true,
       ratings: {
-        where: {
-          id,
-        },
         select: {
           id: true,
           score: true,
@@ -116,7 +112,6 @@ export const updateUser = async (user: Omit<User, 'id'>, id: number) => {
     select: {
       id: true,
       username: true,
-      password: true,
       email: true,
       firstName: true,
       lastName: true,
@@ -133,19 +128,7 @@ export const deleteUser = async (id: number) => {
   });
 };
 
-export const createFavoritePlayground = async (
-  userId: number,
-  playgroundId: number
-) => {
-  return db.userPlayground.create({
-    data: {
-      userId,
-      playgroundId,
-    },
-  });
-};
-
-export const getUserFavoritePlayground = async (
+export const getUserFavoritePlaygrounds = async (
   id: number,
   playgroundId: number
 ) => {
@@ -182,14 +165,61 @@ export const getUserFavoritePlayground = async (
   });
 };
 
-export const deleteFavoritePlayground = async (
+export const updateUserFavoritePlayground = async (
   userId: number,
   playgroundId: number
 ) => {
-  // return db.userPlayground.delete({
-  //   where: {
-  //     userId,
-  //     playgroundId,
-  //   },
-  // });
+  try {
+    // Find the user by id
+    const user = await db.user.findUnique({
+      where: {
+        id: userId,
+      },
+    });
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    // Check if the playground is already a favorite of the user
+    const existingFavorite = await db.userPlayground.findFirst({
+      where: {
+        userId: userId,
+        playgroundId: playgroundId,
+      },
+    });
+
+    // If the playground is already a favorite, remove it
+    if (existingFavorite) {
+      await db.userPlayground.delete({
+        where: {
+          userId_playgroundId: {
+            userId: userId,
+            playgroundId: playgroundId,
+          },
+        },
+      });
+      return 'Playground removed from user favorites';
+    }
+
+    // Add the playground as a favorite for the user
+    await db.userPlayground.create({
+      data: {
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+        playground: {
+          connect: {
+            id: playgroundId,
+          },
+        },
+      },
+    });
+
+    return 'User favorite playground updated successfully';
+  } catch (error: any) {
+    return error.message;
+  }
 };

@@ -7,10 +7,9 @@ import { compareSync, hashSync } from 'bcryptjs';
 
 import dotenv from 'dotenv';
 import { generateToken, verifyToken } from '../middleware/authJWT';
+import { PASSWORD_SALT } from '../utils/consts';
 
 dotenv.config();
-
-const SALT = 10;
 
 export const authRouter = express.Router();
 
@@ -47,7 +46,7 @@ authRouter.post(
       }
 
       const user = request.body;
-      const hashedPassword = hashSync(password, SALT);
+      const hashedPassword = hashSync(password, PASSWORD_SALT);
 
       const createdUser = await UserService.createUser({
         ...user,
