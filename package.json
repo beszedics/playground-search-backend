@@ -4,7 +4,7 @@
   "description": "Playground search application backend side for the university dissertation written in PERN",
   "main": "index.js",
   "scripts": {
-    "build": "npx prisma generate && rimraf dist && npx tsc",
+    "build": "rimraf dist && npx tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
