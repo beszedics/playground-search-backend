@@ -37,3 +37,5 @@ app.use(`${BASE_API_URI}/auth`, authRouter);
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+
+export default app;
