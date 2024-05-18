@@ -53,8 +53,11 @@ authRouter.post(
         password: hashedPassword,
       });
 
+      const token = generateToken(createdUser);
+
       return response.status(200).json({
         user: createdUser,
+        token: token,
         message: 'User created successfully',
         success: true,
       });
